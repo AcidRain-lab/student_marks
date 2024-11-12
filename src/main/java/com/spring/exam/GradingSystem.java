@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExamApplication {
+public class GradingSystem {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExamApplication.class, args);
+		SpringApplication.run(GradingSystem.class, args);
 	}
 
 }
