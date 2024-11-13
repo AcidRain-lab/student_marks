@@ -6,6 +6,7 @@ import com.spring.exam.service.GradeService;
 import com.spring.exam.service.StudentService;
 import com.spring.exam.service.SubjectService;
 import com.spring.exam.service.TeacherService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -32,6 +33,7 @@ public class TeacherController {
 
     // --- Методы для управления оценками (старые) ---
 
+    @PreAuthorize("hasRole('TEACHER')")
     @GetMapping("/grades")
     public String viewGrades(Model model) {
         List<Grade> grades = gradeService.getAllGrades();
@@ -39,6 +41,7 @@ public class TeacherController {
         return "teacher/grades";
     }
 
+    @PreAuthorize("hasRole('TEACHER')")
     @GetMapping("/grades/new")
     public String showCreateForm(Model model) {
         model.addAttribute("grade", new Grade());
@@ -47,6 +50,7 @@ public class TeacherController {
         return "teacher/grade-form";
     }
 
+    @PreAuthorize("hasRole('TEACHER')")
     @PostMapping("/grades")
     public String saveGrade(@ModelAttribute Grade grade, @RequestParam("teacherId") Long teacherId) {
         Teacher teacher = teacherService.getTeacherById(teacherId);
@@ -55,6 +59,7 @@ public class TeacherController {
         return "redirect:/teacher/grades";
     }
 
+    @PreAuthorize("hasRole('TEACHER')")
     @GetMapping("/grades/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         Grade grade = gradeService.getGradeById(id);
@@ -64,6 +69,7 @@ public class TeacherController {
         return "teacher/grade-form";
     }
 
+    @PreAuthorize("hasRole('TEACHER')")
     @PostMapping("/grades/{id}")
     public String updateGrade(@PathVariable("id") Long id, @ModelAttribute Grade grade) {
         Grade existingGrade = gradeService.getGradeById(id);
@@ -93,6 +99,7 @@ public class TeacherController {
         return "teacher/list";
     }
 
+    @PreAuthorize("hasRole('TEACHER')")
     @GetMapping("/new")
     public String showCreateTeacherForm(Model model) {
         model.addAttribute("teacher", new Teacher());
@@ -105,6 +112,7 @@ public class TeacherController {
         return "redirect:/teacher/list";
     }
 
+    @PreAuthorize("hasRole('TEACHER')")
     @GetMapping("/edit/{id}")
     public String showEditTeacherForm(@PathVariable("id") Long id, Model model) {
         Teacher teacher = teacherService.getTeacherById(id);
@@ -112,6 +120,7 @@ public class TeacherController {
         return "teacher/teacher-form";
     }
 
+    @PreAuthorize("hasRole('TEACHER')")
     @PostMapping("/update/{id}")
     public String updateTeacher(@PathVariable("id") Long id, @ModelAttribute Teacher teacher) {
         Teacher existingTeacher = teacherService.getTeacherById(id);
@@ -123,6 +132,7 @@ public class TeacherController {
         return "redirect:/teacher/list";
     }
 
+    @PreAuthorize("hasRole('TEACHER')")
     @GetMapping("/delete/{id}")
     public String deleteTeacher(@PathVariable("id") Long id) {
         teacherService.deleteTeacher(id);

@@ -1,6 +1,7 @@
 package com.spring.exam.Models;
 
-enum Role {
+
+public enum Role {
     TEACHER,
     STUDENT
 }

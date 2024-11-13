@@ -1,7 +1,6 @@
-package com.spring.exam.service;
+package com.spring.exam.repository;
 
 import com.spring.exam.Models.User;
-import com.spring.exam.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 

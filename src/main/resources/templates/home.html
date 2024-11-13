@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>Welcome to the Home Page</h1>
-
-<!-- Меню навигации -->
-<nav>
-    <ul>
-        <li><a th:href="@{/templates/teacher}">Teachers</a></li>
-    </ul>
-</nav>
-
-
+<div class="container">
+    <h1>Welcome to the Grading System</h1>
+    <nav>
+        <ul>
+            <li><a href="/teacher/grades">Teacher Panel</a></li>
+            <li><a href="/student/grades/{id}">Student Panel</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</div>
 </body>
 </html>
+
