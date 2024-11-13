@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Teacher Form</title>
+</head>
+<body>
+<h1 th:text="${#strings.isEmpty(teacher.id) ? 'Add New Teacher' : 'Edit Teacher'}"></h1>
+<form th:action="@{/teacher/save}" th:object="${teacher}" method="post">
+    <label>First Name:</label>
+    <input type="text" th:field="*{firstName}" required>
+    <br>
+    <label>Last Name:</label>
+    <input type="text" th:field="*{lastName}" required>
+    <br>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

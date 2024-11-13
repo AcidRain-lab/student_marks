@@ -30,7 +30,8 @@ public class TeacherController {
         this.teacherService = teacherService;
     }
 
-    // Отображение всех оценок
+    // --- Методы для управления оценками (старые) ---
+
     @GetMapping("/grades")
     public String viewGrades(Model model) {
         List<Grade> grades = gradeService.getAllGrades();
@@ -38,7 +39,6 @@ public class TeacherController {
         return "teacher/grades";
     }
 
-    // Отображение формы для создания оценки
     @GetMapping("/grades/new")
     public String showCreateForm(Model model) {
         model.addAttribute("grade", new Grade());
@@ -47,7 +47,6 @@ public class TeacherController {
         return "teacher/grade-form";
     }
 
-    // Сохранение новой оценки
     @PostMapping("/grades")
     public String saveGrade(@ModelAttribute Grade grade, @RequestParam("teacherId") Long teacherId) {
         Teacher teacher = teacherService.getTeacherById(teacherId);
@@ -56,7 +55,6 @@ public class TeacherController {
         return "redirect:/teacher/grades";
     }
 
-    // Отображение формы для редактирования оценки
     @GetMapping("/grades/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         Grade grade = gradeService.getGradeById(id);
@@ -66,7 +64,6 @@ public class TeacherController {
         return "teacher/grade-form";
     }
 
-    // Обновление оценки
     @PostMapping("/grades/{id}")
     public String updateGrade(@PathVariable("id") Long id, @ModelAttribute Grade grade) {
         Grade existingGrade = gradeService.getGradeById(id);
@@ -81,10 +78,54 @@ public class TeacherController {
         return "redirect:/teacher/grades";
     }
 
-    // Удаление оценки
     @GetMapping("/grades/delete/{id}")
     public String deleteGrade(@PathVariable("id") Long id) {
         gradeService.deleteGrade(id);
         return "redirect:/teacher/grades";
+    }
+
+    // --- Методы для управления учителями (новые) ---
+
+    @GetMapping("/list")
+    public String viewTeachers(Model model) {
+        List<Teacher> teachers = teacherService.getAllTeachers();
+        model.addAttribute("teachers", teachers);
+        return "teacher/list";
+    }
+
+    @GetMapping("/new")
+    public String showCreateTeacherForm(Model model) {
+        model.addAttribute("teacher", new Teacher());
+        return "teacher/teacher-form";
+    }
+
+    @PostMapping("/save")
+    public String saveTeacher(@ModelAttribute Teacher teacher) {
+        teacherService.saveTeacher(teacher);
+        return "redirect:/teacher/list";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditTeacherForm(@PathVariable("id") Long id, Model model) {
+        Teacher teacher = teacherService.getTeacherById(id);
+        model.addAttribute("teacher", teacher);
+        return "teacher/teacher-form";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateTeacher(@PathVariable("id") Long id, @ModelAttribute Teacher teacher) {
+        Teacher existingTeacher = teacherService.getTeacherById(id);
+        if (existingTeacher != null) {
+            existingTeacher.setFirstName(teacher.getFirstName());
+            existingTeacher.setLastName(teacher.getLastName());
+            teacherService.saveTeacher(existingTeacher);
+        }
+        return "redirect:/teacher/list";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteTeacher(@PathVariable("id") Long id) {
+        teacherService.deleteTeacher(id);
+        return "redirect:/teacher/list";
     }
 }
