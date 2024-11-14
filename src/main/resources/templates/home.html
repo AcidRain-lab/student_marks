@@ -5,16 +5,21 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="header">
+    <div class="left">
+        Welcome, <span th:text="${username}"></span>
+    </div>
+    <div class="right">
+        <a href="/logout" class="btn">Logout</a>
+    </div>
+</div>
+<div class="nav-bar">
+    <a href="/teacher/list" class="nav-link">Teachers</a>
+    <a href="/teacher/grades" class="nav-link">Teacher Grades</a>
+    <a href="/student/list" class="nav-link">Students</a>
+</div>
 <div class="container">
     <h1>Welcome to the Grading System</h1>
-    <nav>
-        <ul>
-            <li><a href="/teacher/grades">Teacher Panel</a></li>
-            <li><a href="/student/grades/{id}">Student Panel</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-    </nav>
 </div>
 </body>
 </html>
-

@@ -22,4 +22,3 @@ public class Subject {
     @JsonIgnore
     private List<Grade> grades;
 }
-

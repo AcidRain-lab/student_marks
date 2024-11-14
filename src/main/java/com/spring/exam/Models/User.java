@@ -4,13 +4,10 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import lombok.AllArgsConstructor;
-
 @Entity
 @Table(name = "users")
-@Data // Генерирует геттеры, сеттеры, equals, hashCode и toString
-@NoArgsConstructor // Генерирует конструктор без параметров
-@AllArgsConstructor // Генерирует конструктор со всеми параметрами
+@Data
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -23,19 +20,14 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING) // Сохраняем значение enum как строку
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
-    @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
+    // Поля для хранения teacher_id и student_id без связей
+    @Column(name = "teacher_id", nullable = true)
+    private Long teacherId;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
+    @Column(name = "student_id", nullable = true)
+    private Long studentId;
 }
-
-
-
-

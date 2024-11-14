@@ -2,17 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Teacher Form</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1 th:text="${#strings.isEmpty(teacher.id) ? 'Add New Teacher' : 'Edit Teacher'}"></h1>
-<form th:action="@{/teacher/save}" th:object="${teacher}" method="post">
-    <label>First Name:</label>
-    <input type="text" th:field="*{firstName}" required>
-    <br>
-    <label>Last Name:</label>
-    <input type="text" th:field="*{lastName}" required>
-    <br>
-    <button type="submit">Save</button>
-</form>
+<div class="header">
+    <div class="left">
+        Welcome, <span th:text="${username}"></span>
+    </div>
+    <div class="right">
+        <a href="/logout" class="btn">Logout</a>
+    </div>
+</div>
+<div class="container">
+    <h1 th:text="${#strings.isEmpty(teacher.id) ? 'Add New Teacher' : 'Edit Teacher'}"></h1>
+    <form th:action="@{/teacher/save}" th:object="${teacher}" method="post">
+        <label>First Name:</label>
+        <input type="text" th:field="*{firstName}" required>
+        <br>
+        <label>Last Name:</label>
+        <input type="text" th:field="*{lastName}" required>
+        <br>
+        <button type="submit" class="btn">Save</button>
+    </form>
+</div>
 </body>
 </html>

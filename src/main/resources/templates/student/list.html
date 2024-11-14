@@ -2,26 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Student List</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>All Students</h1>
-<a href="/student/new">Add New Student</a>
-<table>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Actions</th>
-    </tr>
-    <tr th:each="student : ${students}">
-        <td th:text="${student.firstName}"></td>
-        <td th:text="${student.lastName}"></td>
-        <td>
-            <a th:href="@{/student/edit/{id}(id=${student.id})}">Edit</a>
-            <a th:href="@{/student/delete/{id}(id=${student.id})}" onclick="return confirm('Are you sure?')">Delete</a>
-            <a th:href="@{/student/grades/{id}(id=${student.id})}">View Grades</a>
-        </td>
-    </tr>
-</table>
+<div class="header">
+    <div class="left">
+        Welcome, <span th:text="${username}"></span>
+    </div>
+    <div class="right">
+        <a href="/logout" class="btn">Logout</a>
+    </div>
+</div>
+<div class="container">
+    <h1>All Students</h1>
+    <a href="/student/new" class="btn">Add New Student</a>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td>
+                <a th:href="@{/student/edit/{id}(id=${student.id})}" class="btn">Edit</a>
+                <a th:href="@{/student/delete/{id}(id=${student.id})}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                <a th:href="@{/student/grades/{id}(id=${student.id})}" class="btn btn-success">View Grades</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
-

@@ -1,24 +1,30 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>My Grades</title>
+    <title>Student Grades</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>My Grades</h1>
-<table>
-    <tr>
-        <th>Subject</th>
-        <th>Score</th>
-        <th>Comment</th>
-        <th>Date</th>
-    </tr>
-    <tr th:each="grade : ${grades}">
-        <td th:text="${grade.subject.name}"></td>
-        <td th:text="${grade.score}"></td>
-        <td th:text="${grade.comment}"></td>
-        <td th:text="${#dates.format(grade.date, 'yyyy-MM-dd')}"></td>
-    </tr>
-</table>
+<div class="container">
+    <h1>Grades for Student</h1>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Comment</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="grade : ${grades}">
+            <td th:text="${grade.subject.name}"></td>
+            <td th:text="${grade.score}"></td>
+            <td th:text="${grade.comment}"></td>
+            <td th:text="${#dates.format(grade.date, 'yyyy-MM-dd')}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

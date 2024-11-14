@@ -1,0 +1,169 @@
+/* Styled Table */
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007BFF;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px 5px 0 0;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-warning {
+    background-color: #FFC107;
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: #E0A800;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    color: white;
+}
+
+.header .btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.header .btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    display: flex;
+    background-color: #333;
+    overflow: hidden;
+    padding: 10px 0;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.nav-link {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #575757;
+}
+
+.nav-link.active {
+    background-color: #575757;
+    font-weight: bold;
+}
+
+/* Container */
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* General Styling for Forms */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form input[type="submit"], form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover, form button:hover {
+    background-color: #45a049;
+}

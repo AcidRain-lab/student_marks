@@ -33,6 +33,8 @@ public class StudentController {
         return "student/list";
     }
 
+
+
     // Отображение формы для создания студента
     @GetMapping("/new")
     public String showCreateStudentForm(Model model) {
@@ -69,9 +71,9 @@ public class StudentController {
         return "redirect:/student/list";
     }
 
-    // Просмотр оценок конкретного студента
+
     @GetMapping("/grades/{id}")
-    public String viewStudentGrades(@PathVariable("id") Long id, Model model) {
+    public String viewGrades(@PathVariable("id") Long id, Model model) {
         List<Grade> grades = studentService.getGradesByStudent(id);
         model.addAttribute("grades", grades);
         return "student/grades";

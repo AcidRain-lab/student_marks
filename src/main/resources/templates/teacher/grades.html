@@ -2,28 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Teacher Grades</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>All Grades</h1>
-<a href="/teacher/grades/new">Add New Grade</a>
-<table>
-    <tr>
-        <th>Student</th>
-        <th>Subject</th>
-        <th>Score</th>
-        <th>Date</th>
-        <th>Actions</th>
-    </tr>
-    <tr th:each="grade : ${grades}">
-        <td th:text="${grade.student.firstName + ' ' + grade.student.lastName}"></td>
-        <td th:text="${grade.subject.name}"></td>
-        <td th:text="${grade.score}"></td>
-        <td th:text="${#dates.format(grade.date, 'yyyy-MM-dd')}"></td>
-        <td>
-            <a th:href="@{/teacher/grades/edit/{id}(id=${grade.id})}">Edit</a>
-            <a th:href="@{/teacher/grades/delete/{id}(id=${grade.id})}" onclick="return confirm('Are you sure?')">Delete</a>
-        </td>
-    </tr>
-</table>
+<div class="header">
+    <div class="left">
+        Welcome, <span th:text="${username}"></span>
+    </div>
+    <div class="right">
+        <a href="/logout" class="btn">Logout</a>
+    </div>
+</div>
+<div class="container">
+    <h1>Grades Assigned</h1>
+    <a href="/teacher/grades/new" class="btn">Add New Grade</a>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Student</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Date</th>
+            <th>Comment</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="grade : ${grades}">
+            <td th:text="${grade.student.firstName + ' ' + grade.student.lastName}"></td>
+            <td th:text="${grade.subject.name}"></td>
+            <td th:text="${grade.score}"></td>
+            <td th:text="${#dates.format(grade.date, 'yyyy-MM-dd')}"></td>
+            <td th:text="${grade.comment}"></td>
+            <td>
+                <a th:href="@{/teacher/grades/edit/{id}(id=${grade.id})}" class="btn">Edit</a>
+                <a th:href="@{/teacher/grades/delete/{id}(id=${grade.id})}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
